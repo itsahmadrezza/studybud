@@ -20,7 +20,8 @@ class Room(models.Model):
         Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=64)
     decription = models.TextField(null=True, blank=True) # use null for user can be blank this fild
-    # participants =
+    participants = models.ManyToManyField(
+        User, related_name="participants", blank=True)
     updated = models.DateTimeField(auto_now=True) # this ecouls when type your cometns this type time now
     created = models.DateTimeField(auto_now_add=True) # this means take snapshot when text writed 
 
