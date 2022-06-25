@@ -134,6 +134,7 @@ def userProfile(request, pk):
 @login_required(login_url= 'login')    
 def createRoom(request):
     form = RoomForm()
+    topics = Topic.objects.all()
 
     if request.method == 'POST':
         form = RoomForm(request.POST)
@@ -144,7 +145,8 @@ def createRoom(request):
             return HttpResponseRedirect(reverse('home'))
 
     return render(request, 'base/room_form.html', {
-        "form": form
+        "form": form,
+        "topics": topics
     })
 
 
